@@ -1,10 +1,10 @@
-query AllTweets {
-  allTweets {
-    userId
-    tweetId
-    tweetBody
-    retweetId
+query getAllTodo {
+  getAllTodo {
+    id
+    title
+    description
+    completed
     createdAt
-    userInfo
+    updatedAt
   }
 }
