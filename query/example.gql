@@ -1,0 +1,10 @@
+query AllTweets {
+  allTweets {
+    userId
+    tweetId
+    tweetBody
+    retweetId
+    createdAt
+    userInfo
+  }
+}
