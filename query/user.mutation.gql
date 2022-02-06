@@ -1,0 +1,8 @@
+mutation putUser($userId: String, $name: String) {
+  todo: postTodo(id: $userId, name: $name}) {
+    id
+    name
+    email
+    createdAt
+  }
+}
