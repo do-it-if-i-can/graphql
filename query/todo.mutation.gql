@@ -1,0 +1,17 @@
+mutation postTodo($userId: String, $title: String, $executionDate: Date) {
+  todo: postTodo(todoDto: { userId: $userId, title: $title, executionDate: $executionDate }) {
+    id
+    title
+    completed
+    executionDate
+    createdAt
+
+    userId
+  }
+}
+
+mutation deleteTodo($id: String!) {
+  deleteTodo(id: $id) {
+    id
+  }
+}

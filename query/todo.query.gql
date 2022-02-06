@@ -1,0 +1,21 @@
+query getTodoList($userId: String) {
+  getTodoList(userId: $userId) {
+    id
+    title
+    description
+    completed
+    createdAt
+    updatedAt
+  }
+}
+
+query getTodo($id: ID) {
+  getTodo(id: $id) {
+    id
+    title
+    description
+    completed
+    createdAt
+    updatedAt
+  }
+}
