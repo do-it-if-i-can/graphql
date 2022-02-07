@@ -1,0 +1,8 @@
+query pokemonGetdaze {
+  pokemons(first: 10) {
+    id
+    image
+    name
+    number
+  }
+}
