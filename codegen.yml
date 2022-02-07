@@ -1,8 +1,10 @@
 # graphqlサーバーのエンドポイント
-schema: "http://localhost:4000/graphql"
+schema: "https://graphql-pokemon2.vercel.app/"
+# schema: "http://localhost:4000/graphql"
 
 # どのファイルを見るか
-documents: "src/graphql/query/*.ts"
+documents: "src/graphql/query/pokemon.query.gql"
+# documents: "src/graphql/query/**.gql"
 
 overwrite: true
 
