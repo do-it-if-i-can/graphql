@@ -1,5 +1,5 @@
 # graphqlサーバーのエンドポイント
-schema: "https://cloudrun-srv-mepitupq6a-an.a.run.app/"
+schema: "https://cloudrun-srv-mepitupq6a-an.a.run.app/query"
 
 # どのファイルを見るか
 # documents: "query/*.gql"
