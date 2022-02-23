@@ -4,12 +4,12 @@
 以下の手順でGraphQLのスキーマ(ex. `schema.graphql`)から型を生成する
 （※基本的にはServerリポジトリ側でSchemaに変更があった場合に実行する）
 
-graphqlリポジトリ内で`yarn codegen`を実行する（gql.tsxファイル内の型定義が更新される）
+- graphqlリポジトリ内で`yarn codegen`を実行する（gql.tsxファイル内の型定義が更新される）
 ```bash
 yarn codegen
 ```
 
-変更をコミットしてリモートにプッシュする
+- 変更をコミットしてリモートにプッシュする
 ```bash
 git push origin HEAD
 ```
