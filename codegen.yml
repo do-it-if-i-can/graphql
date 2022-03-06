@@ -27,6 +27,8 @@ generates:
           uuid: "string"
           timestamptz: "string"
           bigint: "number"
+          DateTime: Date
+          Uint: number
           _text: "string[]"
       apolloReactCommonImportFrom: "@apollo/client"
       apolloReactHooksImportFrom: "@apollo/client"
