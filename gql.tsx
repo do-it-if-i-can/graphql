@@ -12,6 +12,7 @@ export type Scalars = {
   Int: number;
   Float: number;
   DateTime: any;
+  Uint: any;
 };
 
 export enum Category {
@@ -20,9 +21,59 @@ export enum Category {
   TOMORROW = 'TOMORROW'
 }
 
+export type CopyTodo = {
+  todoId: Scalars['Uint'];
+};
+
+export type DeleteTodo = {
+  todoId: Scalars['Uint'];
+};
+
+export type EditTodo = {
+  description?: InputMaybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
+  todoId: Scalars['Uint'];
+};
+
+export type EditUser = {
+  avatar?: InputMaybe<Scalars['String']>;
+  displayName?: InputMaybe<Scalars['String']>;
+  userId: Scalars['ID'];
+  userName?: InputMaybe<Scalars['String']>;
+};
+
+export type GetTodosByCategory = {
+  category: Category;
+  userId: Scalars['ID'];
+};
+
+export type GetTodosByUser = {
+  userId: Scalars['ID'];
+};
+
+export type GetUserById = {
+  userId: Scalars['ID'];
+};
+
+export type MoveTodo = {
+  afterTodoIds: Array<Scalars['Uint']>;
+  category: Category;
+  todoId: Scalars['Uint'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
-  createTodo: Todo;
+  copyTodo: Scalars['Boolean'];
+  createTodo: Scalars['Boolean'];
+  deleteTodo: Scalars['Boolean'];
+  editTodo: Scalars['Boolean'];
+  editUser: User;
+  moveTodo: Scalars['Boolean'];
+};
+
+
+export type MutationCopyTodoArgs = {
+  input: CopyTodo;
 };
 
 
@@ -30,21 +81,53 @@ export type MutationCreateTodoArgs = {
   input: NewTodo;
 };
 
+
+export type MutationDeleteTodoArgs = {
+  input: DeleteTodo;
+};
+
+
+export type MutationEditTodoArgs = {
+  input: EditTodo;
+};
+
+
+export type MutationEditUserArgs = {
+  input: EditUser;
+};
+
+
+export type MutationMoveTodoArgs = {
+  input: MoveTodo;
+};
+
 export type NewTodo = {
   category: Category;
   description?: InputMaybe<Scalars['String']>;
   title: Scalars['String'];
-  userId: Scalars['String'];
+  userId: Scalars['ID'];
 };
 
 export type Query = {
   __typename?: 'Query';
-  todos: Array<Todo>;
+  getTodosByCategory: Array<Todo>;
+  getTodosByUser: Array<Maybe<Todo>>;
+  getUserById?: Maybe<User>;
 };
 
 
-export type QueryTodosArgs = {
-  category?: InputMaybe<Category>;
+export type QueryGetTodosByCategoryArgs = {
+  input: GetTodosByCategory;
+};
+
+
+export type QueryGetTodosByUserArgs = {
+  input: GetTodosByUser;
+};
+
+
+export type QueryGetUserByIdArgs = {
+  input: GetUserById;
 };
 
 export type Todo = {
@@ -53,7 +136,7 @@ export type Todo = {
   createdAt: Scalars['DateTime'];
   description?: Maybe<Scalars['String']>;
   done: Scalars['Boolean'];
-  id: Scalars['ID'];
+  id: Scalars['Uint'];
   priority: Scalars['Int'];
   title: Scalars['String'];
   updatedAt: Scalars['DateTime'];
@@ -64,8 +147,9 @@ export type User = {
   __typename?: 'User';
   avatar?: Maybe<Scalars['String']>;
   createdAt: Scalars['DateTime'];
+  displayName: Scalars['String'];
   id: Scalars['ID'];
-  name: Scalars['String'];
   todos: Array<Maybe<Todo>>;
   updatedAt: Scalars['DateTime'];
+  userName: Scalars['String'];
 };
