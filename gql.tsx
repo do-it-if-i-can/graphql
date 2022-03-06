@@ -11,8 +11,8 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  DateTime: any;
-  Uint: any;
+  DateTime: Date;
+  Uint: number;
 };
 
 export enum Category {
@@ -26,12 +26,6 @@ export type CopyTodo = {
 };
 
 export type DeleteTodo = {
-  todoId: Scalars['Uint'];
-};
-
-export type EditTodo = {
-  description?: InputMaybe<Scalars['String']>;
-  title?: InputMaybe<Scalars['String']>;
   todoId: Scalars['Uint'];
 };
 
@@ -66,9 +60,10 @@ export type Mutation = {
   copyTodo: Scalars['Boolean'];
   createTodo: Scalars['Boolean'];
   deleteTodo: Scalars['Boolean'];
-  editTodo: Scalars['Boolean'];
   editUser: User;
   moveTodo: Scalars['Boolean'];
+  updateTodo: Scalars['Boolean'];
+  updateTodoDone: Scalars['Boolean'];
 };
 
 
@@ -87,11 +82,6 @@ export type MutationDeleteTodoArgs = {
 };
 
 
-export type MutationEditTodoArgs = {
-  input: EditTodo;
-};
-
-
 export type MutationEditUserArgs = {
   input: EditUser;
 };
@@ -99,6 +89,16 @@ export type MutationEditUserArgs = {
 
 export type MutationMoveTodoArgs = {
   input: MoveTodo;
+};
+
+
+export type MutationUpdateTodoArgs = {
+  input: UpdateTodo;
+};
+
+
+export type MutationUpdateTodoDoneArgs = {
+  input: UpdateTodoDone;
 };
 
 export type NewTodo = {
@@ -141,6 +141,17 @@ export type Todo = {
   title: Scalars['String'];
   updatedAt: Scalars['DateTime'];
   user: User;
+};
+
+export type UpdateTodo = {
+  description?: InputMaybe<Scalars['String']>;
+  title: Scalars['String'];
+  todoId: Scalars['Uint'];
+};
+
+export type UpdateTodoDone = {
+  done: Scalars['Boolean'];
+  todoId: Scalars['Uint'];
 };
 
 export type User = {
