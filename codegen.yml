@@ -2,7 +2,7 @@
 schema: "https://cloudrun-srv-mepitupq6a-an.a.run.app/query"
 
 # どのファイルを見るか
-# documents: "query/*.gql"
+documents: "query/*.gql"
 
 overwrite: true
 
@@ -21,14 +21,14 @@ generates:
       withComponent: false
       preResolveTypes: false
       namingConvention:
-          typeNames: "pascal-case#pascalCase"
-          enumValues: "upper-case#upperCase"
+        typeNames: "pascal-case#pascalCase"
+        enumValues: "upper-case#upperCase"
       scalars:
-          uuid: "string"
-          timestamptz: "string"
-          bigint: "number"
-          DateTime: Date
-          Uint: number
-          _text: "string[]"
+        uuid: "string"
+        timestamptz: "string"
+        bigint: "number"
+        DateTime: Date
+        Uint: number
+        _text: "string[]"
       apolloReactCommonImportFrom: "@apollo/client"
       apolloReactHooksImportFrom: "@apollo/client"
