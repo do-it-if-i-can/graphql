@@ -177,7 +177,7 @@ export type GetTodosByCategoryQuery = (
   { __typename?: 'Query' }
   & { getTodosByCategory: Array<(
     { __typename?: 'Todo' }
-    & Pick<Todo, 'id' | 'title'>
+    & Pick<Todo, 'id' | 'title' | 'done' | 'priority'>
   )> }
 );
 
@@ -187,6 +187,8 @@ export const GetTodosByCategoryDocument = gql`
   getTodosByCategory(input: $input) {
     id
     title
+    done
+    priority
   }
 }
     `;
