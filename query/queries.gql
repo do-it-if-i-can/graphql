@@ -2,5 +2,7 @@ query getTodosByCategory($input: GetTodosByCategory!) {
   getTodosByCategory(input: $input) {
     id
     title
+    done
+    priority
   }
 }
