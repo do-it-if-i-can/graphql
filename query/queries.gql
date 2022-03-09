@@ -10,6 +10,7 @@ query getTodosByCategory($input: GetTodosByCategory!) {
 query getTodosByUser($input: GetTodosByUser!) {
   getTodosByUser(input: $input) {
     id
+    category
     title
     done
     priority

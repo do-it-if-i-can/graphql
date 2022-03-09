@@ -190,7 +190,7 @@ export type GetTodosByUserQuery = (
   { __typename?: 'Query' }
   & { getTodosByUser: Array<Maybe<(
     { __typename?: 'Todo' }
-    & Pick<Todo, 'id' | 'title' | 'done' | 'priority'>
+    & Pick<Todo, 'id' | 'category' | 'title' | 'done' | 'priority'>
   )>> }
 );
 
@@ -237,6 +237,7 @@ export const GetTodosByUserDocument = gql`
     query getTodosByUser($input: GetTodosByUser!) {
   getTodosByUser(input: $input) {
     id
+    category
     title
     done
     priority
