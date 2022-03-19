@@ -16,3 +16,7 @@ query getTodosByUser($input: GetTodosByUser!) {
     priority
   }
 }
+
+mutation updateTodoDone($input: UpdateTodoDone!) {
+  updateTodoDone(input: $input)
+}
