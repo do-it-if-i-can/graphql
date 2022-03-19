@@ -32,13 +32,6 @@ export type DeleteTodo = {
   todoId: Scalars['Uint'];
 };
 
-export type EditUser = {
-  avatar?: InputMaybe<Scalars['String']>;
-  displayName?: InputMaybe<Scalars['String']>;
-  userId: Scalars['ID'];
-  userName?: InputMaybe<Scalars['String']>;
-};
-
 export type GetTodosByCategory = {
   category: Category;
   userId: Scalars['ID'];
@@ -63,10 +56,10 @@ export type Mutation = {
   copyTodo: Scalars['Boolean'];
   createTodo: Scalars['Boolean'];
   deleteTodo: Scalars['Boolean'];
-  editUser: User;
   moveTodo: Scalars['Boolean'];
   updateTodo: Scalars['Boolean'];
   updateTodoDone: Scalars['Boolean'];
+  upsertUser: User;
 };
 
 
@@ -85,11 +78,6 @@ export type MutationDeleteTodoArgs = {
 };
 
 
-export type MutationEditUserArgs = {
-  input: EditUser;
-};
-
-
 export type MutationMoveTodoArgs = {
   input: MoveTodo;
 };
@@ -102,6 +90,11 @@ export type MutationUpdateTodoArgs = {
 
 export type MutationUpdateTodoDoneArgs = {
   input: UpdateTodoDone;
+};
+
+
+export type MutationUpsertUserArgs = {
+  input: UpsertUser;
 };
 
 export type NewTodo = {
@@ -157,6 +150,13 @@ export type UpdateTodoDone = {
   todoId: Scalars['Uint'];
 };
 
+export type UpsertUser = {
+  avatar?: InputMaybe<Scalars['String']>;
+  displayName: Scalars['String'];
+  userId: Scalars['ID'];
+  userName: Scalars['String'];
+};
+
 export type User = {
   __typename?: 'User';
   avatar?: Maybe<Scalars['String']>;
@@ -192,6 +192,16 @@ export type GetTodosByUserQuery = (
     { __typename?: 'Todo' }
     & Pick<Todo, 'id' | 'category' | 'title' | 'done' | 'priority'>
   )>> }
+);
+
+export type UpdateTodoDoneMutationVariables = Exact<{
+  input: UpdateTodoDone;
+}>;
+
+
+export type UpdateTodoDoneMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'updateTodoDone'>
 );
 
 
@@ -272,3 +282,34 @@ export function useGetTodosByUserLazyQuery(baseOptions?: ApolloReactHooks.LazyQu
 export type GetTodosByUserQueryHookResult = ReturnType<typeof useGetTodosByUserQuery>;
 export type GetTodosByUserLazyQueryHookResult = ReturnType<typeof useGetTodosByUserLazyQuery>;
 export type GetTodosByUserQueryResult = ApolloReactCommon.QueryResult<GetTodosByUserQuery, GetTodosByUserQueryVariables>;
+export const UpdateTodoDoneDocument = gql`
+    mutation updateTodoDone($input: UpdateTodoDone!) {
+  updateTodoDone(input: $input)
+}
+    `;
+export type UpdateTodoDoneMutationFn = ApolloReactCommon.MutationFunction<UpdateTodoDoneMutation, UpdateTodoDoneMutationVariables>;
+
+/**
+ * __useUpdateTodoDoneMutation__
+ *
+ * To run a mutation, you first call `useUpdateTodoDoneMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateTodoDoneMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateTodoDoneMutation, { data, loading, error }] = useUpdateTodoDoneMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateTodoDoneMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<UpdateTodoDoneMutation, UpdateTodoDoneMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useMutation<UpdateTodoDoneMutation, UpdateTodoDoneMutationVariables>(UpdateTodoDoneDocument, options);
+      }
+export type UpdateTodoDoneMutationHookResult = ReturnType<typeof useUpdateTodoDoneMutation>;
+export type UpdateTodoDoneMutationResult = ApolloReactCommon.MutationResult<UpdateTodoDoneMutation>;
+export type UpdateTodoDoneMutationOptions = ApolloReactCommon.BaseMutationOptions<UpdateTodoDoneMutation, UpdateTodoDoneMutationVariables>;
