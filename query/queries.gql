@@ -20,3 +20,11 @@ query getTodosByUser($input: GetTodosByUser!) {
 mutation updateTodoDone($input: UpdateTodoDone!) {
   updateTodoDone(input: $input)
 }
+
+mutation copyTodo($input: CopyTodo!) {
+  copyTodo(input: $input)
+}
+
+mutation deleteTodo($input: DeleteTodo!) {
+  deleteTodo(input: $input)
+}
