@@ -224,6 +224,26 @@ export type DeleteTodoMutation = (
   & Pick<Mutation, 'deleteTodo'>
 );
 
+export type CreateTodoMutationVariables = Exact<{
+  input: NewTodo;
+}>;
+
+
+export type CreateTodoMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'createTodo'>
+);
+
+export type UpdateTodoMutationVariables = Exact<{
+  input: UpdateTodo;
+}>;
+
+
+export type UpdateTodoMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'updateTodo'>
+);
+
 
 export const GetTodosByCategoryDocument = gql`
     query getTodosByCategory($input: GetTodosByCategory!) {
@@ -395,3 +415,65 @@ export function useDeleteTodoMutation(baseOptions?: ApolloReactHooks.MutationHoo
 export type DeleteTodoMutationHookResult = ReturnType<typeof useDeleteTodoMutation>;
 export type DeleteTodoMutationResult = ApolloReactCommon.MutationResult<DeleteTodoMutation>;
 export type DeleteTodoMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteTodoMutation, DeleteTodoMutationVariables>;
+export const CreateTodoDocument = gql`
+    mutation createTodo($input: NewTodo!) {
+  createTodo(input: $input)
+}
+    `;
+export type CreateTodoMutationFn = ApolloReactCommon.MutationFunction<CreateTodoMutation, CreateTodoMutationVariables>;
+
+/**
+ * __useCreateTodoMutation__
+ *
+ * To run a mutation, you first call `useCreateTodoMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateTodoMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createTodoMutation, { data, loading, error }] = useCreateTodoMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCreateTodoMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CreateTodoMutation, CreateTodoMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useMutation<CreateTodoMutation, CreateTodoMutationVariables>(CreateTodoDocument, options);
+      }
+export type CreateTodoMutationHookResult = ReturnType<typeof useCreateTodoMutation>;
+export type CreateTodoMutationResult = ApolloReactCommon.MutationResult<CreateTodoMutation>;
+export type CreateTodoMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateTodoMutation, CreateTodoMutationVariables>;
+export const UpdateTodoDocument = gql`
+    mutation updateTodo($input: UpdateTodo!) {
+  updateTodo(input: $input)
+}
+    `;
+export type UpdateTodoMutationFn = ApolloReactCommon.MutationFunction<UpdateTodoMutation, UpdateTodoMutationVariables>;
+
+/**
+ * __useUpdateTodoMutation__
+ *
+ * To run a mutation, you first call `useUpdateTodoMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateTodoMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateTodoMutation, { data, loading, error }] = useUpdateTodoMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateTodoMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<UpdateTodoMutation, UpdateTodoMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useMutation<UpdateTodoMutation, UpdateTodoMutationVariables>(UpdateTodoDocument, options);
+      }
+export type UpdateTodoMutationHookResult = ReturnType<typeof useUpdateTodoMutation>;
+export type UpdateTodoMutationResult = ApolloReactCommon.MutationResult<UpdateTodoMutation>;
+export type UpdateTodoMutationOptions = ApolloReactCommon.BaseMutationOptions<UpdateTodoMutation, UpdateTodoMutationVariables>;

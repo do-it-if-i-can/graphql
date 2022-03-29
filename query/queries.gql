@@ -28,3 +28,11 @@ mutation copyTodo($input: CopyTodo!) {
 mutation deleteTodo($input: DeleteTodo!) {
   deleteTodo(input: $input)
 }
+
+mutation createTodo($input: NewTodo!) {
+  createTodo(input: $input)
+}
+
+mutation updateTodo($input: UpdateTodo!) {
+  updateTodo(input: $input)
+}
